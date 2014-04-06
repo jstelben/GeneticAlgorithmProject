@@ -51,7 +51,7 @@ int Fitness::GetPower(Chromosome* c)
 {
 	int power = 0;
 	bool bigUsed = false;
-	bool isDwarf = (c->GetClass() == DWARF);
+	bool isDwarf = (c->GetRace() == DWARF);
 	power += c->GetLevel();
 	switch(c->GetHand1())
 	{
@@ -195,7 +195,7 @@ int Fitness::GetPower(Chromosome* c)
 				break;
 			}
 	}
-	if(c->GetHand1() < TWO_HANDED_WEAPONS)
+	if(c->GetHand1() > TWO_HANDED_WEAPONS)
 	{
 		switch(c->GetHand2())
 		{
@@ -1310,6 +1310,6 @@ void Fitness::PrintChromosome(Chromosome* c)
 			}
 	}
 
-	std::cout << level << " " << gender << " " << race << " " << playerClass << "\n" << hand1 << "	" << hand2 << "\n" << armor << " " << headgear << " " << footgear << std::endl;
+	std::cout << "\n" << level << " " << gender << " " << race << " " << playerClass << "\n" << hand1 << "	" << hand2 << "\n" << armor << " " << headgear << " " << footgear << std::endl;
 
 }
