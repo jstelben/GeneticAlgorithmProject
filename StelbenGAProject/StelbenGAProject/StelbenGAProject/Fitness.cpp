@@ -1313,3 +1313,366 @@ void Fitness::PrintChromosome(Chromosome* c)
 	std::cout << "\n" << level << " " << gender << " " << race << " " << playerClass << "\n" << hand1 << "	" << hand2 << "\n" << armor << " " << headgear << " " << footgear << std::endl;
 
 }
+
+void Fitness::WriteChromosome(Chromosome* c, std::ofstream* file)
+{
+	char* level = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetLevel())
+	{
+		case 1:
+			{
+				level = "1";
+				break;
+			}
+		case 2:
+			{
+				level = "2";
+				break;
+			}
+		case 3:
+			{
+				level = "3";
+				break;
+			}
+		case 4:
+			{
+				level = "4";
+				break;
+			}
+		case 5:
+			{
+				level = "5";
+				break;
+			}
+		case 6:
+			{
+				level = "6";
+				break;
+			}
+		case 7:
+			{
+				level = "7";
+				break;
+			}
+		case 8:
+			{
+				level = "8";
+				break;
+			}
+		case 9:
+			{
+				level = "9";
+				break;
+			}
+	}
+
+	char* gender = (char*) malloc(sizeof(char) * BUFFER);
+	if(c->GetGender() == MALE)
+	{
+		gender = "Male";
+	}
+	else
+	{
+		gender = "Female";
+	}
+
+	char* race = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetRace())
+	{
+		case HUMAN:
+			{
+				race = "Human";
+				break;
+			}
+		case ELF:
+			{
+				race = "Elf";
+				break;
+			}
+		case DWARF:
+			{
+				race = "Dwarf";
+				break;
+			}
+		case HALFLING:
+			{
+				race = "Halfling";
+				break;
+			}
+	}
+
+	char* playerClass = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetClass())
+	{
+		case WIZARD:
+			{
+				playerClass = "Wizard";
+				break;
+			}
+		case WARRIOR:
+			{
+				playerClass = "Warrior";
+				break;
+			}
+		case CLERIC:
+			{
+				playerClass = "Cleric";
+				break;
+			}
+		case THIEF:
+			{
+				playerClass = "Thief";
+				break;
+			}
+		case NOCLASS:
+			{
+				playerClass = "No Class";
+				break;
+			}
+	}
+
+	char* hand1 = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetHand1())
+	{
+		case BOW_WITH_RIBBONS:
+			{
+				hand1 = "Bow With Ribbons";
+				break;
+			}
+		case ELEVEN_FOOT_POLE:
+			{
+				hand1 = "Eleven Foot Pole";
+				break;
+			}
+		case CHAINSAW_OF_BLOODY_DISMEMBERMENT:
+			{
+				hand1 = "Chainsaw of Bloody Dismemberment";
+				break;
+			}
+		case SWISS_ARMY_POLEARM:
+			{
+				hand1 = "Swiss Army Polearm";
+				break;
+			}
+		case HUGE_ROCK:
+			{
+				hand1 = "Huge Rock";
+				break;
+			}
+		case MACE_OF_SHARPNESS:
+			{
+				hand1 = "Mace of Sharpness";
+				break;
+			}
+		case SNEAKY_BASTARD_SWORD:
+			{
+				hand1 = "Sneaky Bastard Sword";
+				break;
+			}
+		case BROAD_SWORD:
+			{
+				hand1 = "Broad Sword";
+				break;
+			}
+		case SHIELD_OF_UBIQUITY:
+			{
+				hand1 = "Shield of Ubiquity";
+				break;
+			}
+		case CHEESE_GRATER_OF_PEACE:
+			{
+				hand1 = "Cheese Grater of Peace";
+				break;
+			}
+		case RAT_ON_A_STICK:
+			{
+				hand1 = "Rat on a Stick";
+				break;
+			}
+		case RAPIER_OF_UNFAIRNESS:
+			{
+				hand1 = "Rapier of Unfairness";
+				break;
+			}
+		case GENTLEMENS_CLUB:
+			{
+				hand1 = "Gentlemen's Club";
+				break;
+			}
+		case HAMMER_OF_KNEECAPPING:
+			{
+				hand1 = "Hammer of Kneecapping";
+				break;
+			}
+		case STAFF_OF_NAPALM:
+			{
+				hand1 = "Staff of Napalm";
+				break;
+			}
+		case DAGGER_OF_TREACHERY:
+			{
+				hand1 = "Dagger of Treachery";
+				break;
+			}
+		case BUCKLER_OF_SWASHING:
+			{
+				hand1 = "Buckler of Swashing";
+				break;
+			}
+		case TUBA_OF_CHARM:
+			{
+				hand1 = "Tuba of Charm";
+				break;
+			}
+	}
+	char* hand2 = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetHand2())
+	{
+		case MACE_OF_SHARPNESS:
+			{
+				hand2 = "Mace of Sharpness";
+				break;
+			}
+		case SNEAKY_BASTARD_SWORD:
+			{
+				hand2 = "Sneaky Bastard Sword";
+				break;
+			}
+		case BROAD_SWORD:
+			{
+				hand2 = "Broad Sword";
+				break;
+			}
+		case SHIELD_OF_UBIQUITY:
+			{
+				hand2 = "Shield of Ubiquity";
+				break;
+			}
+		case CHEESE_GRATER_OF_PEACE:
+			{
+				hand2 = "Cheese Grater of Peace";
+				break;
+			}
+		case RAT_ON_A_STICK:
+			{
+				hand2 = "Rat on a Stick";
+				break;
+			}
+		case RAPIER_OF_UNFAIRNESS:
+			{
+				hand2 = "Rapier of Unfairness";
+				break;
+			}
+		case GENTLEMENS_CLUB:
+			{
+				hand2 = "Gentlemen's Club";
+				break;
+			}
+		case HAMMER_OF_KNEECAPPING:
+			{
+				hand2 = "Hammer of Kneecapping";
+				break;
+			}
+		case STAFF_OF_NAPALM:
+			{
+				hand2 = "Staff of Napalm";
+				break;
+			}
+		case DAGGER_OF_TREACHERY:
+			{
+				hand2 = "Dagger of Treachery";
+				break;
+			}
+		case BUCKLER_OF_SWASHING:
+			{
+				hand2 = "Buckler of Swashing";
+				break;
+			}
+		case TUBA_OF_CHARM:
+			{
+				hand2 = "Tuba of Charm";
+				break;
+			}
+		case EMPTY:
+			{
+				hand2 = "Empty Handed";
+				break;
+			}
+	}
+
+	char* armor = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetArmor())
+	{
+		case FLAMING_ARMOR:
+			{
+				armor = "Flaming Armor";
+				break;
+			}
+		case SLIMY_ARMOR:
+			{
+				armor = "Slimy Armor";
+				break;
+			}
+		case SHORT_WIDE_ARMOR:
+			{
+				armor = "Short Wide Armor";
+				break;
+			}
+		case MITHRIL_ARMOR:
+			{
+				armor = "Mithril Armor";
+				break;
+			}
+		case LEATHER_ARMOR:
+			{
+				armor = "Leather Armor";
+				break;
+			}
+	}
+	char* headgear = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetHeadgear())
+	{
+		case HORNY_HELMET:
+			{
+				headgear = "Horny Helmet";
+				break;
+			}
+		case POINTY_HAT_OF_POWER:
+			{
+				headgear = "Pointy Hat of Power";
+				break;
+			}
+		case HELM_OF_COURAGE:
+			{
+				headgear = "Helm of Courage";
+				break;
+			}
+		case BAD_ASS_BANDANA:
+			{
+				headgear = "Bad Ass Bandana";
+				break;
+			}
+	}
+	char* footgear = (char*) malloc(sizeof(char) * BUFFER);
+	switch(c->GetFootgear())
+	{
+		case BOOTS_OF_RUNNING_REALLY_FAST:
+			{
+				footgear = "Boots of Running Really Fast";
+				break;
+			}
+		case BOOTS_OF_BUTT_KICKING:
+			{
+				footgear = "Boots of Butt Kicking";
+				break;
+			}
+		case SANDALS_OF_PROTECTION:
+			{
+				footgear = "Sandals of Protection";
+				break;
+			}
+	}
+
+	(*file) << "\n" << level << " " << gender << " " << race << " " << playerClass << "\n" << hand1 << "	" << hand2 << "\n" << armor << " " << headgear << " " << footgear << std::endl << std::endl;
+
+}
