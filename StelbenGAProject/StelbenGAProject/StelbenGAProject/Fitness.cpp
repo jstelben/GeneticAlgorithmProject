@@ -42,7 +42,7 @@ bool playerWins(int playerPower, int monsterPower, bool isWarrior)
 	}
 }
 
-int getDieRoll()
+int getDieRoll(void)
 {
 	return (1 + rand() % 5);
 }
@@ -195,7 +195,7 @@ int Fitness::GetPower(Chromosome* c)
 				break;
 			}
 	}
-	if(c->GetHand1() > TWO_HANDED_WEAPONS)
+	if(c->GetHand1() >= TWO_HANDED_WEAPONS)
 	{
 		switch(c->GetHand2())
 		{
@@ -236,7 +236,7 @@ int Fitness::GetPower(Chromosome* c)
 			{
 				if(c->GetClass() == CLERIC)
 				{
-					power += 3;
+					power += 4;
 				}
 				break;
 			}

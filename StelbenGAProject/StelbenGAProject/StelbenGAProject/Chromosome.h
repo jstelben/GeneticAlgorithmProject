@@ -10,23 +10,24 @@ class Chromosome
 {
 public:
 	Chromosome(void);
-	Chromosome(Chromosome* parent);
+	Chromosome(Chromosome* x, Chromosome* y);
 	~Chromosome(void);
 	
-	float GetFitness();
+	float GetFitness(void);
 	void SetFitness(float f);
-	int GetPower();
+	int GetPower(void);
 	void SetPower(int p);
 
-	int GetLevel();
-	int GetGender();
-	int GetRace();
-	int GetClass();
-	int GetHand1();
-	int GetHand2();
-	int GetArmor();
-	int GetHeadgear();
-	int GetFootgear();
+	int GetLevel(void);
+	int GetGender(void);
+	int GetRace(void);
+	int GetClass(void);
+	int GetHand1(void);
+	int GetHand2(void);
+	int GetArmor(void);
+	int GetHeadgear(void);
+	int GetFootgear(void);
+	int GetGeneAt(int index);
 
 	void PrintChromosome();
 private:

@@ -14,6 +14,8 @@
 #include <random>
 #include <time.h>
 #include <iostream>
+#include <fstream>
+#include "Population.h"
 
 
 

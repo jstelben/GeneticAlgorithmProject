@@ -1,6 +1,7 @@
 #pragma once
 
 #define CHROMOSOME_LENGTH 9
+#define MUTATE_CHANCE 5
 
 enum ChromosomeDetails
 {
