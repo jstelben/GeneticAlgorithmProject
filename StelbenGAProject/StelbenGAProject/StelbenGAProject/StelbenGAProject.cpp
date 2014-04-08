@@ -7,20 +7,11 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	srand(time(0));
-	/*
-	Chromosome* c = new Chromosome();
-	c->SetPower(Fitness::GetPower(c));
-	c->SetFitness(Fitness::GetFitness(c));
-	std::cout << c->GetFitness() << std::endl;
-	std::cout << c->GetPower() << std::endl;
-	c->PrintChromosome();
-	Fitness::PrintChromosome(c);
-	*/
+
 	std::ofstream resultFile;
-	resultFile.open("results.txt");
+	resultFile.open("results2.txt");
 
-
-	Population* pop = new Population(50);
+	Population* pop = new Population(1000);
 	for(int i = 0; i < 5000; i++)
 	{
 		Chromosome* c = pop->GetFittest();
@@ -32,6 +23,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	
 	resultFile.close();
+
 	return 0;
 }
 

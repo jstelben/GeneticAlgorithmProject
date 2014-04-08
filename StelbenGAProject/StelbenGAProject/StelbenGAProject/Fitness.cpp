@@ -2,7 +2,7 @@
 #include "Fitness.h"
 
 #define LEVEL_WORTH 1
-#define TREASURE_WORTH 0.34f
+#define TREASURE_WORTH 0.5f
 #define DEATH 5 * TREASURE_WORTH
 #define BUFFER 40
 
@@ -16,7 +16,7 @@ Fitness::~Fitness(void)
 }
 
 
-
+//Checks if the build can use another Big item
 bool canUseBig(bool bigUsed, bool isDwarf)
 {
 	if(!bigUsed || isDwarf)
@@ -26,6 +26,7 @@ bool canUseBig(bool bigUsed, bool isDwarf)
 	return false;
 }
 
+//Checks if build beats the monster
 bool playerWins(int playerPower, int monsterPower, bool isWarrior)
 {
 	if(playerPower == monsterPower && isWarrior)
@@ -42,11 +43,13 @@ bool playerWins(int playerPower, int monsterPower, bool isWarrior)
 	}
 }
 
+//Returns random number 1-6
 int getDieRoll(void)
 {
 	return (1 + rand() % 5);
 }
 
+//Gets power score from given build
 int Fitness::GetPower(Chromosome* c)
 {
 	int power = 0;
@@ -393,6 +396,8 @@ int Fitness::GetPower(Chromosome* c)
 	return power;
 }
 
+//Fitness function
+//Tests if the build wins against every monster
 float Fitness::GetFitness(Chromosome* c)
 {
 	//fitness addition is level + treasure gained
@@ -951,6 +956,7 @@ float Fitness::GetFitness(Chromosome* c)
 	return fitness;
 }
 
+//Prints the chromosome in strings
 void Fitness::PrintChromosome(Chromosome* c)
 {
 	char* level = (char*) malloc(sizeof(char) * BUFFER);
@@ -1314,6 +1320,7 @@ void Fitness::PrintChromosome(Chromosome* c)
 
 }
 
+//Write the chromosome to a given file
 void Fitness::WriteChromosome(Chromosome* c, std::ofstream* file)
 {
 	char* level = (char*) malloc(sizeof(char) * BUFFER);
