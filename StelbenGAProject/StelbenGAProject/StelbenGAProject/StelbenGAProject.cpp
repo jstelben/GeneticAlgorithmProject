@@ -9,17 +9,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	srand(time(0));
 
 	std::ofstream resultFile;
-	resultFile.open("results2.txt");
+	resultFile.open("results.txt");
 
-	Population* pop = new Population(1000);
+	Population* pop = new Population(15);
 	for(int i = 0; i < 5000; i++)
 	{
 		Chromosome* c = pop->GetFittest();
+		//if(i % 50 == 0)
+		//{
 		resultFile << "Fitness: " << c->GetFitness() << std::endl;
 		resultFile << "Power: " << c->GetPower();
 		Fitness::WriteChromosome(c, &resultFile);
+		//}
 
-		pop->NewPopulation(true);
+		pop->NewPopulation(false);
 	}
 	
 	resultFile.close();

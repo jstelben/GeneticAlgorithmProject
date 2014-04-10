@@ -7,6 +7,7 @@
 class Population
 {
 public:
+	//Constructor
 	Population(int size);
 	~Population(void);
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Population.h"
 
+//Creates a population of a given size
 Population::Population(int size)
 {
 	population = (Chromosome**) malloc(sizeof(Chromosome*) * size);
@@ -17,17 +18,25 @@ Population::Population(int size)
 
 Population::~Population(void)
 {
+	for(int i = 0; i < popSize; i++)
+	{
+		delete(population[i]);
+	}
+	delete(population);
 }
 
+//Returns Chromosome with highest Fitness score
 Chromosome* Population::GetFittest(void)
 {
 	return population[0];
 }
 
+//Creates a new population
 void Population::NewPopulation(bool elitism)
 {
 	Chromosome** newPop = (Chromosome**) malloc(sizeof(Chromosome*) * popSize);
 	int i = 0;
+	//if elitism is actived save the fittest chromosome
 	if(elitism)
 	{
 		newPop[0] = population[0];
@@ -35,6 +44,7 @@ void Population::NewPopulation(bool elitism)
 	}
 	for(i; i < popSize; i++)
 	{
+		//Gets two chromosomes based on ranking
 		Chromosome* x = GetRankingChromosome();
 		Chromosome* y = GetRankingChromosome();
 		newPop[i] = new Chromosome(x,y);
@@ -48,13 +58,13 @@ void Population::NewPopulation(bool elitism)
 	delete(newPop);
 	for(int i = 0; i < popSize; i++)
 	{
-		population[i] = new Chromosome();
 		population[i]->SetPower(Fitness::GetPower(population[i]));
 		population[i]->SetFitness(Fitness::GetFitness(population[i]));
 	}
 	sortPopulation();
 }
 
+//Selection Sort based on Fitness scores
 void Population::sortPopulation(void)
 {
 	for(int i = 0; i < popSize; i++)
@@ -74,6 +84,7 @@ void Population::sortPopulation(void)
 	}
 }
 
+//Prints every Chromosome's Fitness score
 void Population::PrintPopulationFitness(void)
 {
 	for(int i = 0; i < popSize; i++)
@@ -86,6 +97,10 @@ void Population::PrintPopulationFitness(void)
 	}
 }
 
+//Uses ranking system to return a Chromosome
+//Picks a random number between 0 and popSize^2
+//The sorted chromosome list has the rankings as (popSize - index - 1) ^ 2
+//Fitter chromosomes have a better chance at selection than less fit.
 Chromosome* Population::GetRankingChromosome(void)
 {
 	int chosen = rand() % ((int) pow(popSize, 2));

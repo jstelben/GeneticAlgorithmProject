@@ -5,8 +5,11 @@
 class Fitness
 {
 public:
+	//Constructor
 	Fitness(void);
 	~Fitness(void);
+
+
 	static int GetPower(Chromosome* c);
 	static float GetFitness(Chromosome* c);
 	static void PrintChromosome(Chromosome* c);

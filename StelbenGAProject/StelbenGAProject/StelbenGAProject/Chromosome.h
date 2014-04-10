@@ -9,15 +9,16 @@
 class Chromosome
 {
 public:
+	//Constructors
 	Chromosome(void);
 	Chromosome(Chromosome* x, Chromosome* y);
 	~Chromosome(void);
 	
+	//Getters and Setters
 	float GetFitness(void);
 	void SetFitness(float f);
 	int GetPower(void);
 	void SetPower(int p);
-
 	int GetLevel(void);
 	int GetGender(void);
 	int GetRace(void);
@@ -30,6 +31,7 @@ public:
 	int GetGeneAt(int index);
 
 	void PrintChromosome();
+
 private:
 	int* gene;
 	float fitness;

@@ -2,7 +2,7 @@
 #include "Chromosome.h"
 
 
-
+//Makes a random Chromosome
 Chromosome::Chromosome(void)
 {
 	gene = (int*) malloc(sizeof(int) * CHROMOSOME_LENGTH);
@@ -11,11 +11,14 @@ Chromosome::Chromosome(void)
 	makeRandomGene();
 }
 
+//Makes a Chromosome by crossingover two others
 Chromosome::Chromosome(Chromosome* x, Chromosome* y)
 {
 	gene = (int*) malloc(sizeof(int) * CHROMOSOME_LENGTH);
 	fitness = 0;
 	power = 0;
+
+	//Choose random crossover index
 	int crossoverIndex = rand() % (CHROMOSOME_LENGTH - 1);
 	for(int i = 0; i < CHROMOSOME_LENGTH; i++)
 	{
@@ -31,11 +34,13 @@ Chromosome::Chromosome(Chromosome* x, Chromosome* y)
 	mutate();
 }
 
+//Deconstructor
 Chromosome::~Chromosome(void)
 {
 	delete(gene);
 }
 
+//Gives each gene a chance to change
 void Chromosome::mutate(void)
 {
 	for(int i = 0; i < CHROMOSOME_LENGTH; i++)
@@ -110,6 +115,7 @@ void Chromosome::mutate(void)
 	}
 }
 
+//Randomly sets each gene
 void Chromosome::makeRandomGene(void)
 {
 	gene[LEVEL] = (1 + rand() % 9);
@@ -134,21 +140,25 @@ void Chromosome::makeRandomGene(void)
 	gene[FOOTGEAR] = rand() % FOOTGEAR_SIZE;
 }
 
+//Get fitness score
 float Chromosome::GetFitness(void)
 {
 	return fitness;
 }
 
+//Set fitness score
 void Chromosome::SetFitness(float f)
 {
 	fitness = f;
 }
 
+//Get power
 int Chromosome::GetPower(void)
 {
 	return power;
 }
 
+//Set power
 void Chromosome::SetPower(int p)
 {
 	power = p;
@@ -205,6 +215,7 @@ int Chromosome::GetFootgear(void)
 	return gene[FOOTGEAR];
 }
 
+//Prints every number in the Shromosome
 void Chromosome::PrintChromosome(void)
 {
 	for(int i = 0; i < CHROMOSOME_LENGTH; i++)
@@ -213,6 +224,7 @@ void Chromosome::PrintChromosome(void)
 	}
 }
 
+//Returns gene at given index
 int Chromosome::GetGeneAt(int index)
 {
 	return gene[index];
